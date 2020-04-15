@@ -1,0 +1,77 @@
+/*
+ * Copyright (C) 2020 Gyaltso Technologies (https://gyaltso.com) and others.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ */
+module org.xtext.helloworldsl.GenerateHelloWorldDsl
+
+import org.eclipse.xtext.xtext.generator.*
+import org.eclipse.xtext.xtext.generator.model.project.*
+
+var rootPath = ".."
+var fileHeader = "/*
+ * Copyright (C) 2020 Gyaltso Technologies (https://gyaltso.com) and others.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ */"
+
+Workflow {
+
+	component = XtextGenerator {
+		configuration = {
+			project = StandardProjectConfig {
+				baseName = "org.xtext.helloworldsl"
+				rootPath = rootPath
+				genericIde = {
+					enabled = true
+				}
+				mavenLayout = true
+			}
+			code = {
+				encoding = "windows-1252"
+				lineDelimiter = "\r\n"
+				fileHeader = fileHeader
+				preferXtendStubs = false
+			}
+		}
+		language = StandardLanguage {
+			name = "org.xtext.helloworldsl.HelloWorldDsl"
+			fileExtensions = "hw"
+			serializer = {
+				generateStub = false
+			}
+			validator = {
+			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
+				generateDeprecationValidation = true
+			}
+			generator = {
+				generateStub = false
+			}
+			junitSupport = {
+				generateStub = false
+			}
+			formatter = {
+				generateStub = false
+			}
+			labelProvider = {
+				generateStub = false
+			}
+			outline = {
+				generateStub = false
+			}
+			quickFixProvider = {
+				generateStub = false
+			}
+			scopeProvider = {
+				generateStub = false
+			}
+		}
+	}
+}

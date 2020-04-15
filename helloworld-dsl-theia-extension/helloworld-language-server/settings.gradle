@@ -1,0 +1,2 @@
+include 'org.xtext.helloworldsl'
+include 'org.xtext.helloworldsl.ide'

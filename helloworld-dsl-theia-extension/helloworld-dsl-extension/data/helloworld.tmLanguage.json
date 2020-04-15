@@ -1,0 +1,63 @@
+{
+  "name": "Hello World DSL",
+  "scopeName": "source.hw",
+  "fileTypes": ["hw"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.greeting",
+      "match": "\\b(Hello)\\b"
+    },
+    {
+      "name": "keyword.operator.greeting",
+      "match": "\\=\\>"
+    },
+    {
+      "name": "constant.numeric.greeting",
+      "match": "\\b[1-9][0-9]*\\b"
+    },
+    {
+      "name": "string.quoted.double.greeting",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "string.quoted.single.greeting",
+      "begin": "'",
+      "end": "'"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.greeting",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.greeting"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.greeting"
+            }
+          }
+        },
+        {
+          "begin": "(^\\s+)?(?=//)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.cs"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.greeting"
+        }
+      ]
+    }
+  }
+}

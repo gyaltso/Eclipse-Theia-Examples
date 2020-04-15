@@ -1,0 +1,36 @@
+{
+  "name": "helloworld-dsl-extension",
+  "keywords": [
+    "theia-extension"
+  ],
+  "version": "0.0.0",
+  "files": [
+    "lib",
+    "src",
+    "build",
+    "data"
+  ],
+  "dependencies": {
+    "@theia/core": "latest",
+    "@theia/monaco": "latest",
+    "@theia/languages": "latest"
+  },
+  "devDependencies": {
+    "rimraf": "latest",
+    "typescript": "latest",
+    "copyfiles": "latest"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn run build",
+    "copy-ls": "rimraf build && copyfiles -f ../helloworld-language-server/org.xtext.helloworldsl.ide/build/libs/helloworld-language-server.jar build",
+    "clean": "rimraf lib",
+    "build": "tsc && yarn run copy-ls",
+    "watch": "tsc -w"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/helloworld-dsl-frontend-module",
+      "backend": "lib/node/helloworld-dsl-backend-module"
+    }
+  ]
+}
